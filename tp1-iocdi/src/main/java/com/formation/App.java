@@ -1,6 +1,8 @@
 package com.formation;
 
-import com.formation.service.FeedbackFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
 import com.formation.user.UserInteraction;
 
 /**
@@ -9,12 +11,19 @@ import com.formation.user.UserInteraction;
  */
 public class App {
 	public static void main(String[] args) {
-
-		UserInteraction afficher = new UserInteraction();
-		afficher.setFactory(new FeedbackFactory());
-		afficher.sayHello("toto");
-		afficher.sayGoodBye("toto");
+		ApplicationContext conf = new AnnotationConfigApplicationContext(AppConfig.class);
+		UserInteraction interaction = conf.getBean(UserInteraction.class);
+		// ApplicationContext applicationContext = new
+		// ClassPathXmlApplicationContext("classpath:/applicationContext.xml");
+		// UserInteraction interaction =
+		// applicationContext.getBean(UserInteraction.class);
+		// afficher.setFactory(new FeedbackFactory());
+		interaction.sayHello("toto");
+		interaction.sayGoodBye("toto");
 
 		System.out.println("et la c'est le bug!");
+
+		// close application context
+		// ?
 	}
 }
