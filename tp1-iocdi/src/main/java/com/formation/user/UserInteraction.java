@@ -36,6 +36,15 @@ public class UserInteraction {
 	 * @param name
 	 */
 	public void sayGoodBye(String name) {
-		feedback.say(MessageFormat.format("Hello {0} !", name));
+		feedback.say(MessageFormat.format("Goodbye {0} !", name));
+	}
+
+	public void additioner(Integer A, Integer B) {
+		feedback.calcul(A, B);
+
+	}
+
+	public int sayTheCaptainAgeForAFamousThreeMast(float boatSize, int nbMast) {
+		return feedback.giveMeTheCaptainAge(boatSize, nbMast);
 	}
 }
